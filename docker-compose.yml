@@ -1,5 +1,21 @@
 version: '3.7'
 
+networks:
+  internal-network:
+    driver: bridge
+
 services:
 
   api:
+    container_name: api
+    build:
+      context: ./api
+      target: development
+    volumes:
+      - ./api:/home/node/app
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    env_file: .env
+    networks:
+      - internal-network
+    command: npm run start:dev
