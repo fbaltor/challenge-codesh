@@ -6,7 +6,7 @@ const expressApp = express();
 const PORT = process.env.SERVER_PORT ? +process.env.SERVER_PORT : 3000;
 expressApp.listen(PORT, app);
 
-// Middlewares
+// Routes
 expressApp.get('/', (req, res) => {
   res.send('Root endpoint working!');
 });
